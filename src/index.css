@@ -15,6 +15,7 @@ input {
   border-right: 0;
   border-color: #d1a763;
   max-width: 90%;
+  font-size: medium;
 }
 
 input:focus {
