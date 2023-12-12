@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import Add from './component/Add';
+import Itemlist from './component/Itemlist';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1>예산 계산기</h1>
+      <div className="costBlock">
+        <Add></Add>
+        <Itemlist></Itemlist>
+      </div>
+      <p className="total"> 총 지출 : 원</p>
     </div>
   );
 }
