@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Add from './component/Add';
 import Itemlist from './component/Itemlist';
 
 const initialCostData = localStorage.getItem('costData')
-  ? JSON.parse(localStorage.getItem('costData'))
+  ? [JSON.parse(localStorage.getItem('costData'))]
   : [];
 
 function App() {
   const [costItem, setCostItem] = useState('');
   const [costValue, setCostValue] = useState('');
   const [data, setData] = useState(initialCostData);
+
+  // useEffect(() => {
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +29,7 @@ function App() {
     localStorage.setItem('costData', JSON.stringify(...data, newCostData));
 
     console.log(data);
-    console.log(localStorage.getItem('costData'));
+    console.log(JSON.parse(localStorage.getItem('costData')));
 
     setCostItem('');
     setCostValue('');
