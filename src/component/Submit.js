@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Submit = ({ Submit }) => {
+const Submit = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   if (isEditing) {
