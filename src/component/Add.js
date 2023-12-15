@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Submit from './Submit';
+import SubmitWhitEditBtn from './SubmitWhitEditBtn';
 
 export default function Add({
   handleSubmit,
@@ -7,6 +7,8 @@ export default function Add({
   setCostItem,
   costValue,
   setCostValue,
+  isEditing,
+  setIsEditing,
 }) {
   const handleChange = (e) => {
     setCostItem(e.target.value);
@@ -40,7 +42,10 @@ export default function Add({
           onChange={costChange}
         />
       </div>
-      <Submit></Submit>
+      <SubmitWhitEditBtn
+        isEditing={isEditing}
+        setIsEditing={setIsEditing}
+      ></SubmitWhitEditBtn>
     </form>
   );
 }

@@ -76,3 +76,8 @@ button:hover {
   box-shadow: 0px 10px 10px 1px #525252d0;
   transform: scale(1.1);
 }
+
+button .edit-button .delete-button {
+  border-width: 0;
+  background-color: #fff;
+}

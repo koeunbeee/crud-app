@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 const Item = ({
   id,
@@ -8,15 +8,11 @@ const Item = ({
   setListData,
   provided,
   snapshot,
+  handleClick,
+  editClick,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedItem, setEditedItem] = useState(item);
-
-  const handleClick = (id) => {
-    let newData = listData.filter((data) => data.id !== id);
-    setListData(newData);
-    localStorage.setItem('listData', JSON.stringify(newData));
-  };
+  // const [editedItem, setEditedItem] = useState(item);
 
   //   const handleSubmit = () => {
   //     let newData = listData.map((data) => {
@@ -38,6 +34,7 @@ const Item = ({
       ref={provided.innerRef}
       {...provided.dragHandleProps}
       className=""
+      onClick={() => editClick(id)}
     >
       <div className="item-container">
         <span className="item-name">{item}</span>
@@ -47,7 +44,7 @@ const Item = ({
         <button onClick={() => setIsEditing(true)} className="edit-button">
           edit
         </button>
-        <button onClick={() => handleClick(id)} type="delete-button">
+        <button onClick={() => handleClick(id)} className="delete-button">
           del
         </button>
       </div>

@@ -1,9 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Submit = () => {
-  const [isEditing, setIsEditing] = useState(false);
-
+const SubmitWhitEditBtn = (isEditing, setIsEditing) => {
   if (isEditing) {
     return (
       <button className="edit" type="submit">
@@ -19,4 +17,4 @@ const Submit = () => {
   }
 };
 
-export default Submit;
+export default SubmitWhitEditBtn;
