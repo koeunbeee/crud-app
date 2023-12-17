@@ -4,28 +4,11 @@ const Item = ({
   id,
   item,
   cost,
-  listData,
-  setListData,
   provided,
   snapshot,
-  handleClick,
-  editClick,
+  delClick,
+  valueEditClick,
 }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  // const [editedItem, setEditedItem] = useState(item);
-
-  //   const handleSubmit = () => {
-  //     let newData = listData.map((data) => {
-  //       if (data.id === id) {
-  //         data.item = editedItem;
-  //       }
-  //       return data;
-  //     });
-  //     setListData(newData);
-  //     localStorage.setItem('listData', JSON.stringify(newData));
-  //     setIsEditing(false);
-  //   };
-
   return (
     // <div className="item-container">
     <div
@@ -34,17 +17,16 @@ const Item = ({
       ref={provided.innerRef}
       {...provided.dragHandleProps}
       className=""
-      onClick={() => editClick(id)}
     >
       <div className="item-container">
         <span className="item-name">{item}</span>
         <span className="cost-label">{cost}</span>
       </div>
       <div className="item-edit-with-delete-container">
-        <button onClick={() => setIsEditing(true)} className="edit-button">
+        <button onClick={() => valueEditClick(id)} className="edit-button">
           edit
         </button>
-        <button onClick={() => handleClick(id)} className="delete-button">
+        <button onClick={() => delClick(id)} className="delete-button">
           del
         </button>
       </div>

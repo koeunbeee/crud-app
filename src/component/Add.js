@@ -29,7 +29,7 @@ export default function Add({
           type="text"
           width="30"
           placeholder="예) 렌트비"
-          value={costItem}
+          value={costItem || ''}
           onChange={handleChange}
         />
       </div>
@@ -38,7 +38,7 @@ export default function Add({
         <input
           className="cost"
           type=""
-          value={costValue}
+          value={costValue || ''}
           onChange={costChange}
         />
       </div>

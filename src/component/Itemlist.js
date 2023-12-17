@@ -5,15 +5,13 @@ import Item from './Item';
 export default function Itemlist({
   listData,
   setListData,
-  handleClick,
-  isEditing,
-  setIsEditing,
-  setCostItem,
-  setCostValue,
+  delClick,
+
+  valueEditClick,
 }) {
   const handleRemoveClick = () => {
-    setListData([]);
-    localStorage.setItem('listData', JSON.stringify([]));
+    setListData('');
+    localStorage.setItem('costData', JSON.stringify([]));
   };
 
   const handleEnd = (result) => {
@@ -24,15 +22,7 @@ export default function Itemlist({
 
     newData.splice(result.destination.index, 0, reorderedItem);
     setListData(newData);
-    localStorage.setItem('listData', JSON.stringify(newData));
-  };
-
-  const editClick = (id) => {
-    let editData = listData.filter((data) => data.id === id);
-    console.log(editData);
-    setCostItem(editData.item);
-    setCostValue(editData.cost);
-    //에러 난다 다른방법...
+    localStorage.setItem('costData', JSON.stringify(newData));
   };
 
   return (
@@ -53,12 +43,10 @@ export default function Itemlist({
                       id={data.id}
                       item={data.item}
                       cost={data.cost}
-                      listData={listData}
-                      setListData={setListData}
                       provided={provided}
                       snapshot={snapshot}
-                      handleClick={handleClick}
-                      editClick={editClick}
+                      valueEditClick={valueEditClick}
+                      delClick={delClick}
                     />
                   )}
                 </Draggable>
@@ -68,7 +56,7 @@ export default function Itemlist({
           )}
         </Droppable>
       </DragDropContext>
-      <button className="itemClear" onClick={handleRemoveClick}>
+      <button className="itemClear" onClick={() => handleRemoveClick()}>
         목록 지우기
       </button>
     </div>

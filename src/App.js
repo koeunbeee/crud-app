@@ -18,7 +18,23 @@ function App() {
 
   console.log(localStorage.getItem('costData'));
 
-  const handleClick = useCallback(
+  const valueEditClick = useCallback(
+    (id) => {
+      let editData = data.filter((data) => data.id === id);
+      //editData의 id,item,cost 가져옴
+
+      setCostItem(editData[0].item);
+      setCostValue(editData[0].cost);
+      setIsEditing(true);
+
+      let restData = data.filter((data) => data.id !== id);
+      setData(restData);
+      localStorage.setItem('costData', JSON.stringify(restData));
+    },
+    [data]
+  );
+
+  const delClick = useCallback(
     (id) => {
       let newData = data.filter((data) => data.id !== id);
       setData(newData);
@@ -58,11 +74,8 @@ function App() {
         <Itemlist
           listData={data}
           setlistData={setData}
-          handleClick={handleClick}
-          isEditing={isEditing}
-          setIsEditing={setIsEditing}
-          setCostItem={setCostItem}
-          setCostValue={setCostValue}
+          delClick={delClick}
+          valueEditClick={valueEditClick}
         ></Itemlist>
       </div>
       <p className="total"> 총 지출 : 원</p>
